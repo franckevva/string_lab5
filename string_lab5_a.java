@@ -23,16 +23,12 @@ public class string_lab5_a {
 		{
 			int n=str_mas[i].length();
 			int vowel=0;
-			for(int j=0;j<n;j++)
-			{
-				for(int k=0;k<10;k++)
-					if(str_mas[i].contains(vowel_mas[k]))
+			for(int k=0;k<10;k++)
+				if(str_mas[i].contains(vowel_mas[k]))
 					{
 						vowel++;
-						break;
 					}
-			}
-			ratio_mas[i]=str_mas[i].length()/vowel;
+			ratio_mas[i]=vowel/str_mas[i].length();
 		}
 	
 		for(int i=0;i<str_mas.length-1;i++)
@@ -51,7 +47,7 @@ public class string_lab5_a {
 			}
 		  }
 		for(int i=0;i<str_mas.length;i++)
-			System.out.println(str_mas[i]);
+			System.out.println(str_mas[i] + " -- "+ ratio_mas[i]);
 		sin.close();
 		
 	}
