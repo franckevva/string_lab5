@@ -6,11 +6,12 @@ public class string_lab5_a {
 		Scanner sin=new Scanner(System.in);
 		String str,str_all="";
 		System.out.println("Введите свой текст.\nДля выхода из состояния ввода наберите exit\n");
-		/*while((str=sin.nextLine())!="exit\n")
+		str=sin.nextLine();
+		while(str.compareToIgnoreCase("exit")!=0)
 		{
 			str_all+=str;			
-		}*/
-		str_all=sin.nextLine();
+			str=sin.nextLine();
+		}
 		str_all=str_all.replace(".", "");
 		str_all=str_all.replace(",","");
 		str_all=str_all.replace("!","");
@@ -21,16 +22,13 @@ public class string_lab5_a {
 	
 		for(int i=0;i<str_mas.length;i++)
 		{
-			int n=str_mas[i].length();
-			int vowel=0;
+			double vowel=0;
 			for(int k=0;k<10;k++)
-				if(str_mas[i].contains(vowel_mas[k]))
-					{
-						vowel++;
-					}
-			ratio_mas[i]=vowel/str_mas[i].length();
+				vowel += str_mas[i].split(vowel_mas[k]).length - 1;
+			ratio_mas[i]= vowel/str_mas[i].length();
 		}
 	
+		
 		for(int i=0;i<str_mas.length-1;i++)
 		  {
 			for(int j=i+1;j<str_mas.length;j++)
@@ -46,8 +44,9 @@ public class string_lab5_a {
 			  }
 			}
 		  }
+		System.out.println("\nУпорядоченные слова:");
 		for(int i=0;i<str_mas.length;i++)
-			System.out.println(str_mas[i] + " -- "+ ratio_mas[i]);
+			System.out.println("\t"+str_mas[i]);
 		sin.close();
 		
 	}
