@@ -5,7 +5,7 @@ public class string_lab5_a {
 	public static void main(String[] args) {
 		Scanner sin=new Scanner(System.in);
 		String str,str_all="";
-		System.out.println("Введите свой текст.\nДля выхода из состояния ввода наберите exit\n");
+		System.out.println("пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ.\nпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ exit\n");
 		/*while((str=sin.nextLine())!="exit\n")
 		{
 			str_all+=str;			
@@ -16,7 +16,7 @@ public class string_lab5_a {
 		str_all=str_all.replace("!","");
 		str_all=str_all.replace("?","");
 		String str_mas[]= str_all.split(" ");
-		String vowel_mas[]={"а","о","у","ю","я","э","и","ы","е","ё"};
+		String vowel_mas[]={"пїЅ","пїЅ","пїЅ","пїЅ","пїЅ","пїЅ","пїЅ","пїЅ","пїЅ","пїЅ"};
 		double ratio_mas[]=new double[str_mas.length];
 	
 		for(int i=0;i<str_mas.length;i++)
@@ -24,11 +24,10 @@ public class string_lab5_a {
 			int n=str_mas[i].length();
 			int vowel=0;
 			for(int k=0;k<10;k++)
-				if(str_mas[i].contains(vowel_mas[k]))
-					{
-						vowel++;
-					}
-			ratio_mas[i]=vowel/str_mas[i].length();
+				//Memory expensive way, but nice and simple code: - count how many times contains
+ 				 vowel += str_mas[i].split(vowel_mas[k]).length - 1;
+ 				 // type conversion before '/'
+			ratio_mas[i]=((double)vowel)/str_mas[i].length();
 		}
 	
 		for(int i=0;i<str_mas.length-1;i++)
