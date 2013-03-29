@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class string_lab5_a {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) {try{
 		Scanner sin=new Scanner(System.in);
 		String str,str_all="";
 		System.out.println("Введите свой текст.\nДля выхода из состояния ввода наберите exit\n");
@@ -12,10 +12,13 @@ public class string_lab5_a {
 			str_all+=str;			
 			str=sin.nextLine();
 		}
-		str_all=str_all.replace(".", "");
-		str_all=str_all.replace(",","");
-		str_all=str_all.replace("!","");
-		str_all=str_all.replace("?","");
+		if(!str_all.isEmpty()){
+			
+		str_all=str_all.replace(".", " ");
+		str_all=str_all.replace(","," ");
+		str_all=str_all.replace("!"," ");
+		str_all=str_all.replace("?"," ");
+		str_all=str_all.toLowerCase();
 		String str_mas[]= str_all.split(" ");
 		String vowel_mas[]={"а","о","у","ю","я","э","и","ы","е","ё"};
 		double ratio_mas[]=new double[str_mas.length];
@@ -23,9 +26,15 @@ public class string_lab5_a {
 		for(int i=0;i<str_mas.length;i++)
 		{
 			double vowel=0;
+			if(!str_mas[i].equals("")){
+			str_mas[i]+=" ";
 			for(int k=0;k<10;k++)
 				vowel += str_mas[i].split(vowel_mas[k]).length - 1;
+			str_mas[i]=str_mas[i].trim();
 			ratio_mas[i]= vowel/str_mas[i].length();
+			}
+			else
+				ratio_mas[i]=0;
 		}
 	
 		
@@ -45,10 +54,19 @@ public class string_lab5_a {
 			}
 		  }
 		System.out.println("\nУпорядоченные слова:");
-		for(int i=0;i<str_mas.length;i++)
-			System.out.println("\t"+str_mas[i]);
+			for(int i=0;i<str_mas.length;i++)
+				if(!str_mas[i].equals(""))
+					System.out.println("\t"+str_mas[i]);
+		}
+		else
+			System.out.println("\nВы не ввели слова");
+	
 		sin.close();
-		
+	}
+	catch(Exception e)
+	{
+		System.out.println(e);
+	}
 	}
 
 }
